@@ -366,6 +366,15 @@ tr:hover {
     }
 }
 
+.error {
+    background: #ffe0e0;
+    color: #b30000;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ffb3b3;
+}
+
 /* UTILIDADES */
 .text-center { text-align: center; }
 .mt-2 { margin-top: 1rem; }
