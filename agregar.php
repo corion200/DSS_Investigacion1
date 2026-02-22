@@ -17,7 +17,6 @@ $error = ""; //sesion y array de productos
         <h2>Agregar Nuevo Producto</h2>
         <a href="index.php" class="btn btn-secondary">Volver</a>
     </div>
-()
     <form method="POST" action="agregar_func.php">
         <div class="form-group">
             <label>ID del Producto:</label>
