@@ -367,13 +367,12 @@ tr:hover {
 }
 
 .error {
-    background: #ffe6e6;
-    color: #d8000c;
+    background: #ffe0e0;
+    color: #b30000;
     padding: 10px;
-    border: 1px solid #d8000c;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ffb3b3;
 }
 
 /* UTILIDADES */
