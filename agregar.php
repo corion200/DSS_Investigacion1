@@ -1,17 +1,23 @@
 <!--Procesa agregar-->
 <?php
-require_once "config.php"; //sesion y array de productos
+require_once "config.php";
+$error = ""; //sesion y array de productos
 ?>
 
 <?php include 'header.php'; ?>
 
 <div class="card">
+
+<?php if ($error): ?>
+   <div class="error"><?php echo $error; ?></div>
+<?php endif; ?>
+
     <div class="page-header">
         <h2>Agregar Nuevo Producto</h2>
         <a href="index.php" class="btn btn-secondary">Volver</a>
     </div>
 
-    <form method="POST" action="agregar.php">
+    <form method="POST" action="agregar_func.php">
         <div class="form-group">
             <label>ID del Producto:</label>
             <input type="text" name="id" class="form-control" placeholder="Ej: PROD001" required>
