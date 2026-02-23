@@ -10,6 +10,7 @@ $error = "";
     if (!preg_match("/^[0-9]+$/", $_POST["id"])) {
         $error = ("El id no ha sido escrito correctamente, solo se permiten números");
         header('Location: agregar.php?error=' . urlencode($error));
+        exit();
 
     }
 
@@ -20,12 +21,6 @@ $error = "";
         exit();
         }
 
-    // Descripción (mínimo 10 caracteres, permite más cosas)
-    if (!preg_match("/^[a-zA-ZñÑ., ]{10,}$/", $_POST["descripcion"])) {
-        $error = ("La descripción debe tener mínimo 10 caracteres");
-        header('Location: agregar.php?error=' . urlencode($error));
-        exit();    
-        }
 
     // Precio (números con opcional decimal)
     if (!preg_match("/^[0-9]+(\.[0-9]{1,2})?$/", $_POST["precio"])) {
@@ -41,16 +36,17 @@ $error = "";
         exit();
         }
 
-    // Categoría (solo letras y espacios)
-    if (!preg_match("/^[a-zA-ZñÑ ]+$/", $_POST["categoria"])) {
-        $error = ("La categoría solo permite letras");
-        header('Location: agregar.php?error=' . urlencode($error));
-        exit();
-    }
-
     // Inicializar sesión si no existe el array
     if (!isset($_SESSION['productos'])) {
         $_SESSION['productos'] = [];
+    }
+
+     foreach ($_SESSION['productos'] as $p) {
+        if ($p['id'] === $_POST['id']) {
+            $error = "El ID ya existe, no se pueden repetir";
+            header('Location: agregar.php?error=' . urlencode($error));
+            exit();
+        }
     }
 
     $producto = [

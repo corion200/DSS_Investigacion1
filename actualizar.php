@@ -20,12 +20,6 @@ require_once "config.php"; //sesion y array de productos
         exit();
     }
 
-    // Descripción (mínimo 10 caracteres, permite más cosas)
-    if (!preg_match("/^[a-zA-ZñÑ., ]{10,}$/", $_POST["descripcion"])) {
-        $error = ("La descripción debe tener mínimo 10 caracteres");
-        header('Location: editar.php?id=' . $_POST['id'] . '&error=' . urlencode($error));
-        exit();    
-    }
 
     // Precio (números con opcional decimal)
     if (!preg_match("/^[0-9]+(\.[0-9]{1,2})?$/", $_POST["precio"])) {
@@ -46,6 +40,14 @@ require_once "config.php"; //sesion y array de productos
         $error = ("La categoría solo permite letras");
         header('Location: editar.php?id=' . $_POST['id'] . '&error=' . urlencode($error));
         exit();
+    }
+
+     foreach ($_SESSION['productos'] as $p) {
+        if ($p['id'] === $_POST['id']) {
+            $error = "El ID ya existe, no se pueden repetir";
+            header('Location: agregar.php?error=' . urlencode($error));
+            exit();
+        }
     }
 
     if ($error === "") {
