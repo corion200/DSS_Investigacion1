@@ -20,17 +20,11 @@ if (!$producto) {
     header('Location: index.php');
     exit;
 }
-?>
 
-<?php 
 $error = $_GET['error'] ?? null;
+
+include 'header.php'; 
 ?>
-
-<?php if ($error): ?>
-   <div class="error"><?php echo $error; ?></div>
-<?php endif; ?>
-
-<?php include 'header.php'; ?>
 
 <div class="card">
     <div class="page-header">
@@ -38,7 +32,11 @@ $error = $_GET['error'] ?? null;
         <a href="index.php" class="btn btn-secondary">Volver</a>
     </div>
 
-    <form method="POST" action="actualizar.php">
+    <?php if ($error): ?>
+        <div class="error"><?php echo $error; ?></div>
+    <?php endif; ?>
+
+    <form method="POST" action="actualizar1.php">
         <input type="hidden" name="id_original" value="<?php echo $producto['id']; ?>">
         
         <div class="form-group">
@@ -82,20 +80,3 @@ $error = $_GET['error'] ?? null;
         </div>
     </form>
 </div>
-
-<!-- FOOTER -->
-    </div> <!-- Cierra .container -->
-
-    <footer style="background: white; padding: 1rem; text-align: center; margin-top: 2rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);">
-        <p style="color: #667eea; font-weight: 500;">
-            &copy; 2026 - Sistema de Gestión de Productos | Desarrollo Aplicaciones Web
-        </p>
-    </footer>
-
-    <script>
-    function toggleMenu() {
-        document.querySelector('.nav-links').classList.toggle('show');
-    }
-    </script>
-</body>
-</html>
