@@ -5,10 +5,8 @@ require_once "config.php"; // sesión y array de productos
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $error = "";
-   
-}
 
- // ID (solo números)
+// ID (solo números)
     if (!preg_match("/^[0-9]+$/", $_POST["id"])) {
         $error = ("El id no ha sido escrito correctamente, solo se permiten números");
         header('Location: agregar.php?error=' . urlencode($error));
@@ -68,3 +66,7 @@ $error = "";
 //redireccionar a index.php con mensaje de éxito
     header('Location: index.php?mensaje=Producto agregado correctamente');
     exit();
+   
+}
+
+ 

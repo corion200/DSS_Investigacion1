@@ -8,6 +8,10 @@ $error = ""; //sesion y array de productos
 
 <div class="card">
 
+<?php 
+$error = $_GET['error'] ?? null;
+?>
+
 <?php if ($error): ?>
    <div class="error"><?php echo $error; ?></div>
 <?php endif; ?>
