@@ -14,13 +14,21 @@ if (!empty($_SESSION['productos'])) {
         }
     }
 }
-
+ 
 // Si no encuentra el producto, redirige
 if (!$producto) {
     header('Location: index.php');
     exit;
 }
 ?>
+
+<?php 
+$error = $_GET['error'] ?? null;
+?>
+
+<?php if ($error): ?>
+   <div class="error"><?php echo $error; ?></div>
+<?php endif; ?>
 
 <?php include 'header.php'; ?>
 

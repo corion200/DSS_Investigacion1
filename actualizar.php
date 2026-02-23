@@ -51,17 +51,20 @@ require_once "config.php"; //sesion y array de productos
     if ($error === "") {
         $idOriginal = $_POST['id_original'];
 
-        foreach ($_SESSION['productos'] as &$p) {
+        foreach ($_SESSION['productos'] as &$p){
             if ($p['id'] == $idOriginal) {
+
                 $p['id'] = $_POST['id'];
                 $p['nombre'] = $_POST['nombre'];
                 $p['descripcion'] = $_POST['descripcion'];
                 $p['precio'] = $_POST['precio'];
                 $p['stock'] = $_POST['stock'];
                 $p['categoria'] = $_POST['categoria'];
+
                 break;
             }
         }
+
         unset($p);
         header("Location: index.php");
         exit;
